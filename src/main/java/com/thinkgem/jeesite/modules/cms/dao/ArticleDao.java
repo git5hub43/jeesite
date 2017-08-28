@@ -1,5 +1,5 @@
 /**
- * Copyright &copy; 2012-2014 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
+ * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
  */
 package com.thinkgem.jeesite.modules.cms.dao;
 
@@ -28,7 +28,7 @@ public interface ArticleDao extends CrudDao<Article> {
 //		return update("update Article set hits=hits+1 where id = :p1", new Parameter(id));
 //	}
 	
-	public int updateExpiredWeight();
+	public int updateExpiredWeight(Article article);
 	
 	public List<Category> findStats(Category category);
 //	{

@@ -1,5 +1,5 @@
 /**
- * Copyright &copy; 2012-2014 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
+ * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
  */
 package com.thinkgem.jeesite.modules.cms.service;
 
@@ -47,7 +47,7 @@ public class ArticleService extends CrudService<ArticleDao, Article> {
 		Date updateExpiredWeightDate =  (Date)CacheUtils.get("updateExpiredWeightDateByArticle");
 		if (updateExpiredWeightDate == null || (updateExpiredWeightDate != null 
 				&& updateExpiredWeightDate.getTime() < new Date().getTime())){
-			dao.updateExpiredWeight();
+			dao.updateExpiredWeight(article);
 			CacheUtils.put("updateExpiredWeightDateByArticle", DateUtils.addHours(new Date(), 6));
 		}
 //		DetachedCriteria dc = dao.createDetachedCriteria();

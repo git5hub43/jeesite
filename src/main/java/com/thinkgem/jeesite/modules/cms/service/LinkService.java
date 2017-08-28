@@ -1,5 +1,5 @@
 /**
- * Copyright &copy; 2012-2014 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
+ * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
  */
 package com.thinkgem.jeesite.modules.cms.service;
 
@@ -33,7 +33,7 @@ public class LinkService extends CrudService<LinkDao, Link> {
 		Date updateExpiredWeightDate =  (Date)CacheUtils.get("updateExpiredWeightDateByLink");
 		if (updateExpiredWeightDate == null || (updateExpiredWeightDate != null 
 				&& updateExpiredWeightDate.getTime() < new Date().getTime())){
-			dao.updateExpiredWeight();
+			dao.updateExpiredWeight(link);
 			CacheUtils.put("updateExpiredWeightDateByLink", DateUtils.addHours(new Date(), 6));
 		}
 		link.getSqlMap().put("dsf", dataScopeFilter(link.getCurrentUser(), "o", "u"));
